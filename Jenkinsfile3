@@ -14,8 +14,7 @@ pipeline {
             steps {
                 echo 'Next stage of pipeline!'
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NivethithaThiru/sharedLib2_files.git']]])
-                cd $WORKSPACE
-                ls
+                cat product.csv
             }
         }
     }
