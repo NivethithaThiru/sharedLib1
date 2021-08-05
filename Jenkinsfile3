@@ -18,7 +18,7 @@ pipeline {
         stage('Read File') {
             steps {
                 script {
-                    inputFile.fileCall()
+                    inputFile.fileRead()
                 }
             }
         }
