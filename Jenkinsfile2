@@ -1,0 +1,13 @@
+@Library('jenkins-groovy-sharedLibrary')_
+
+pipeline {
+    agent any
+    stages {
+        stage('Demo') {
+            steps {
+                echo 'Hello World'
+                hello 'Nivethitha Thirumurugan'
+            }
+        }
+    }
+}
