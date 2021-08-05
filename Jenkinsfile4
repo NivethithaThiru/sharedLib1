@@ -1,0 +1,24 @@
+@Library('jenkins-groovy-sharedLibrary')_
+
+pipeline {
+    agent any
+    stages {
+        stage('Demo') {
+            steps {
+                echo 'Hello World'
+                hello 'Nivethitha Thirumurugan'
+            }
+        }
+        stage('Read File') {
+            steps {
+                script {
+                    def filePath = readFile "https://github.com/NivethithaThiru/sharedLib2_files/AppReleases.csv" 
+                    def lines = filePath.readLines() 
+                    for (line in lines) { 
+                        println "$line"
+                    }
+                }
+            }
+        }
+    }
+}
