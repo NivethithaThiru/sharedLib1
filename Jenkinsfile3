@@ -9,7 +9,7 @@ pipeline {
                 hello 'Nivethitha Thirumurugan'
             }
         }
-        stage('Checkout') {
+        stage('Checkout File') {
             steps {
                 echo 'Code checkout from Repo- sharedLib2_files !!'
                 git branch: 'main', url: 'https://github.com/NivethithaThiru/sharedLib2_files'
@@ -21,6 +21,18 @@ pipeline {
                     inputFile.fileCall()
                 }
             }
+        }
+    }
+    post {
+        always {
+            echo 'Sending Email !!'
+            emailext ( attachLog: true, 
+            body: """<p>EXECUTED: Job <b>\'${env.JOB_NAME} : ${env.BUILD_NUMBER}\'</b></p>
+            <p>View console output at <a href="${env.BUILD_URL}">Jenkins ${env.JOB_NAME}:${env.BUILD_NUMBER}</a></p>""",
+            recipientProviders: [requestor(), buildUser()],
+            replyTo: 'do-not-reply@company.com', 
+            subject: """Status: ${currentBuild.result?:'SUCCESS'} - Job \'${env.JOB_NAME}:${env.BUILD_NUMBER}\'""",
+            to: 'nivethithathiru1@gmail.com' )
         }
     }
 }
