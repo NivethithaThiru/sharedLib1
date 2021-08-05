@@ -1,4 +1,3 @@
-  
 @Library('jenkins-groovy-sharedLibrary')_
 
 pipeline {
@@ -12,7 +11,7 @@ pipeline {
         }
         stage('Checkout') {
             steps {
-                echo 'Next stage of pipeline!'
+                echo 'Code checkout from Repo- sharedLib2_files !!'
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NivethithaThiru/sharedLib2_files.git']]])
             }
         }
