@@ -12,7 +12,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Code checkout from Repo- sharedLib2_files !!'
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NivethithaThiru/sharedLib2_files.git']]])
+                git branch: 'main', url: 'https://github.com/NivethithaThiru/sharedLib2_files'
             }
         }
         stage('Read File') {
