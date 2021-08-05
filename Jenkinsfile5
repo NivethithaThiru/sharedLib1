@@ -1,0 +1,30 @@
+@Library('jenkins-groovy-sharedLibrary')_
+
+pipeline {
+    agent any
+    stages {
+        stage('Demo') {
+            steps {
+                echo 'Hello World'
+                hello 'Nivethitha Thirumurugan'
+            }
+        }
+        stage('Checkout') {
+            steps {
+                echo 'Code checkout from Repo- sharedLib2_files !!'
+                git branch: 'main', url: 'https://github.com/NivethithaThiru/sharedLib2_files/blob/main/AppReleases.csv'
+            }
+        }
+        stage('Read File') {
+            steps {
+                script {
+                    def filePath = readFile "AppReleases.csv" 
+                    def lines = filePath.readLines() 
+                    for (line in lines) { 
+                        println "$line"
+                    }
+                }
+            }
+        }
+    }
+}
