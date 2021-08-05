@@ -22,7 +22,7 @@ pipeline {
                     def filePath = readFile "AppReleases.csv" 
                     def lines = filePath.readLines() 
                     for (line in lines) { 
-                        println "$line"*
+                        println "$line"
                 }
             }
         }
