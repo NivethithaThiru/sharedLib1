@@ -9,6 +9,12 @@ pipeline {
                 hello 'Nivethitha Thirumurugan'
             }
         }
+        stage('Checkout') {
+            steps {
+                echo 'Code checkout from Repo- sharedLib2_files !!'
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NivethithaThiru/sharedLib2_files.git']]])
+            }
+        }
         stage('Read File') {
             steps {
                 script {
