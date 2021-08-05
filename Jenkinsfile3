@@ -1,0 +1,22 @@
+  
+@Library('jenkins-groovy-sharedLibrary')_
+
+pipeline {
+    agent any
+    stages {
+        stage('Demo') {
+            steps {
+                echo 'Hello World'
+                hello 'Nivethitha Thirumurugan'
+            }
+        }
+        stage('Checkout') {
+            steps {
+                echo 'Next stage of pipeline!'
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NivethithaThiru/sharedLib2_files.git']]])
+                cd $WORKSPACE
+                ls
+            }
+        }
+    }
+}
