@@ -23,6 +23,7 @@ pipeline {
                     def lines = filePath.readLines() 
                     for (line in lines) { 
                         println "$line"
+                    }
                 }
             }
         }
