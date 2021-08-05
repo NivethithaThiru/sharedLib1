@@ -14,7 +14,16 @@ pipeline {
             steps {
                 echo 'Next stage of pipeline!'
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NivethithaThiru/sharedLib2_files.git']]])
-                cat product.csv
+            }
+        }
+        stage('Read File') {
+            steps {
+                script {
+                    def filePath = readFile "AppReleases.csv" 
+                    def lines = filePath.readLines() 
+                    for (line in lines) { 
+                        println "$line"*
+                }
             }
         }
     }
