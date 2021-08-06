@@ -1,5 +1,3 @@
-@Library('jenkins-groovy-sharedLibrary')_
-
 pipeline {
     agent any
     stages {
