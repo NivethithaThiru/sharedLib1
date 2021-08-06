@@ -14,13 +14,13 @@ pipeline {
                 echo 'Code checkout from Repo- sharedLib2_files !!'
                 //git branch: 'main', url: 'https://github.com/NivethithaThiru/sharedLib2_files'
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NivethithaThiru/sharedLib2_files.git']]])
-                //checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NivethithaThiru/sharedLib2_files.git']]])
             }
         }
         stage('Read File') {
             steps {
                 script {
                     inputFile.fileRead("AppReleases.csv")
+                    inputFile.fileRead("product.csv")
                 }
             }
         }
