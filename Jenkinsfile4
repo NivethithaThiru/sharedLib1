@@ -19,7 +19,7 @@ pipeline {
         stage('Read File') {
             steps {
                 script {
-                    //inputFile.fileRead("AppReleases.csv")
+                    inputFile.fileRead("AppReleases.csv")
                     inputFile.fileRead("product.csv")
                 }
             }
